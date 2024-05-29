@@ -1,0 +1,43 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2_create_organization_table
+      author: pikalova.a
+      tagDatabase: Version 1
+      preConditions:
+        onFail: 'MARK_RAN'
+        not:
+          tableExists:
+            schemaName: public
+            tableName: organization
+      changes:
+        - createTable:
+            tableName: organization
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: CHARACTER VARYING
+              - column:
+                  name: short_name
+                  type: CHARACTER VARYING
+              - column:
+                  name: inn
+                  type: CHARACTER VARYING
+              - column:
+                  name: ogrn
+                  type: CHARACTER VARYING
+              - column:
+                  name: address
+                  type: CHARACTER VARYING
+              - column:
+                  name: general_director
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: fk_organization_user_id
+                    references: users(id)

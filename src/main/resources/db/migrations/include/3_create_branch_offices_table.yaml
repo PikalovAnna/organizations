@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3_create_branch_offices_table
+      author: pikalova.a
+      tagDatabase: Version 1
+      preConditions:
+        onFail: 'MARK_RAN'
+        not:
+          tableExists:
+            schemaName: public
+            tableName: branch_office
+      changes:
+        - createTable:
+            tableName: branch_office
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: organization
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: fk_organization_branch_id
+                    references: organization(id)
+              - column:
+                  name: mail
+                  type: CHARACTER VARYING
+              - column:
+                  name: name
+                  type: CHARACTER VARYING
+              - column:
+                  name: header
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: fk_branch_user_id
+                    references: users(id)

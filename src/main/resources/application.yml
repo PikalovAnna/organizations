@@ -1,0 +1,13 @@
+server.port: 8080
+
+spring:
+  application:
+    name: organization
+  datasource:
+    url: jdbc:postgresql://localhost:5432/organization
+    username: postgres
+    password: 1
+  liquibase:
+    change-log: classpath:/db/migrations/changelog.yaml
+    enabled: true
+    default-schema: public

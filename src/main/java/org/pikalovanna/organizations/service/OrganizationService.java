@@ -25,10 +25,11 @@ public class OrganizationService {
      * @param id идентификатор организации
      * @return объект организации (Organization)
      */
-    public Organization getById(Long id) {
-        return organizationRepository.findById(id).orElseThrow(() ->
+    public OrganizationDto getById(Long id) {
+        Organization organization = organizationRepository.findById(id).orElseThrow(() ->
                 new ObjectNotFoundException("Организация с ID %s не найдена".formatted(id))
         );
+        return new OrganizationDto(organization);
     }
 
     /**

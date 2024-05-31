@@ -65,6 +65,9 @@ public class Organization {
     /**
      * Генеральный директор
      */
-    @OneToMany(mappedBy = "organization", fetch = FetchType.LAZY)
+    @ManyToMany
+    @JoinTable(name = "organization_branch",
+            joinColumns = @JoinColumn(name = "id"),
+            inverseJoinColumns = @JoinColumn(name = "branch_id"))
     List<BranchOffice> branchOffices = new ArrayList<>();
 }

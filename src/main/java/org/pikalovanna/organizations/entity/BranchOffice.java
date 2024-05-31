@@ -41,11 +41,4 @@ public class BranchOffice {
     @JoinColumn(name = "header")
     User header;
 
-    /**
-     * Организация, к которой относится филиал
-     */
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "organization")
-    Organization organization;
-
 }

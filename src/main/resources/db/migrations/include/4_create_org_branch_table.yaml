@@ -1,6 +1,6 @@
 databaseChangeLog:
   - changeSet:
-      id: 3_create_branch_offices_table
+      id: 4_create_org_branch_table
       author: pikalova.a
       tagDatabase: Version 1
       preConditions:
@@ -8,10 +8,10 @@ databaseChangeLog:
         not:
           tableExists:
             schemaName: public
-            tableName: branch_office
+            tableName: organization_branch
       changes:
         - createTable:
-            tableName: branch_office
+            tableName: organization_branch
             columns:
               - column:
                   name: id
@@ -21,14 +21,14 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: mail
-                  type: CHARACTER VARYING
-              - column:
-                  name: name
-                  type: CHARACTER VARYING
-              - column:
-                  name: header
+                  name: organization_id
                   type: BIGINT
                   constraints:
-                    foreignKeyName: fk_branch_user_id
-                    references: users(id)
+                    foreignKeyName: fk_organization_branch_id
+                    references: organization(id)
+              - column:
+                  name: branch_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: fk_branch_organization_id
+                    references: branch_office(id)

@@ -12,3 +12,9 @@ databaseChangeLog:
   - include:
       file: include/3_create_branch_offices_table.yaml
       relativeToChangelogFile: true
+  - include:
+      file: include/4_create_org_branch_table.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: include/5_insert_data.sql
+      relativeToChangelogFile: true

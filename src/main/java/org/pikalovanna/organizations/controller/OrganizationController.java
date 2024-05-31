@@ -4,7 +4,6 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.pikalovanna.organizations.dto.OrganizationDto;
-import org.pikalovanna.organizations.entity.Organization;
 import org.pikalovanna.organizations.service.OrganizationService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -23,7 +22,7 @@ public class OrganizationController {
     OrganizationService organizationService;
 
     @GetMapping("/{id}")
-    public Organization getOrganizationById(@PathVariable("id") Long id) {
+    public OrganizationDto getOrganizationById(@PathVariable("id") Long id) {
         return organizationService.getById(id);
     }
 
